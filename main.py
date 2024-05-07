@@ -5,8 +5,6 @@ import os
 import ssl
 from urllib import request, parse
 
-from linebot import LineBotApi
-from linebot.models import TextSendMessage, ImageSendMessage
 import pandas as pd
 import plotly.figure_factory as ff
 import tweepy
@@ -118,16 +116,3 @@ if len(diff_list) != 0:
     res_media_ids = api.media_upload('data/diff.png')
     media_ids.append(res_media_ids.media_id)
     client.create_tweet(text = text, media_ids=media_ids)
-
-    # LINE
-    line_bot_api = LineBotApi(os.environ['LINE_CHANNEL_ACCESS_TOKEN'])
-
-    line_bot_api.broadcast(
-        messages = [
-            TextSendMessage(text = text),
-            ImageSendMessage(
-                original_content_url = 'https://raw.githubusercontent.com/denpayanara/musen_5G/main/data/diff.png',
-                preview_image_url = 'https://raw.githubusercontent.com/denpayanara/musen_5G/main/data/diff.png'
-            )
-        ]
-    )
