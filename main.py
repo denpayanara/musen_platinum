@@ -80,7 +80,8 @@ with open('data/data.json', 'r') as f:
     previous_data = json.load(f)
 
 # 差分抽出(前回更新データと比較)
-diff_list = [x for x in previous_data if x not in data_list]
+diff_list = [item for item in data_list if item not in previous_data]
+
 
 if len(diff_list) != 0:
     
