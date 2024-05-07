@@ -99,7 +99,7 @@ if len(diff_list) != 0:
         json.dump(data_list, f, ensure_ascii=False, indent=4)
 
     # SNS送信用テキスト
-    text = f'【テスト】プラチナバンドの免許が {len(diff_list)}件 追加されました\n#楽天モバイル #bot'
+    text = f'プラチナバンドの免許が {len(diff_list)}件 追加されました\n#楽天モバイル #bot'
 
     # Twitter
     api_key = os.environ['API_KEY']
